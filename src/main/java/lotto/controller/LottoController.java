@@ -1,25 +1,26 @@
 package lotto.controller;
 
-import lotto.util.validator.InputValidator;
-import lotto.util.parser.PurChaseAmountParser;
-import lotto.util.validator.PurchaseAmountValidator;
+import lotto.model.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+    private final LottoService lottoService;
 
-    public LottoController() {
-
+    public LottoController(LottoService lottoService) {
+        this.lottoService = lottoService;
     }
 
     public void getPurchaseAmount() {
-        OutputView.display();
-        String input = InputView.readLine();
-        InputValidator.validateNotEmpty(input);
-        InputValidator.validateIsNumber(input);
-        int purchaseAmount = PurChaseAmountParser.parse(input);
-        PurchaseAmountValidator.validateUnit(purchaseAmount);
-        PurchaseAmountValidator.validateMinAmount(purchaseAmount);
-        System.out.println(purchaseAmount);
+        while (true) {
+            try {
+                OutputView.purchaseAmount();
+                String input = InputView.readLine();
+                lottoService.savePurchaseAmount(input);
+                return;
+            } catch (IllegalArgumentException e) {
+                OutputView.display(e.getMessage());
+            }
+        }
     }
 }
