@@ -32,12 +32,12 @@ public class LottoService {
         return this.winningNumbers = winningNumbers;
     }
 
-    public void saveBonusNumber(String input) {
+    public int saveBonusNumber(String input) {
         InputValidator.validateNotEmpty(input);
 
         int bonusNumber = NumberParser.parse(input);
         LottoNumbersValidator.validateBonusNumbers(winningNumbers,bonusNumber);
 
-        this.bonusNumber = bonusNumber;
+        return this.bonusNumber = bonusNumber;
     }
 }

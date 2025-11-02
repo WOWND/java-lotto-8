@@ -28,4 +28,10 @@ class LottoNumbersValidatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> LottoNumbersValidator.validateWinningNumbers(List.of(1, 2, 3, 4, 5, 46)));
     }
+
+    @Test
+    void 중복된_보너스번호_예외() {
+        assertThrows(IllegalArgumentException.class,
+                () -> LottoNumbersValidator.validateBonusNumbers(List.of(1, 2, 3, 4, 5, 6), 6));
+    }
 }

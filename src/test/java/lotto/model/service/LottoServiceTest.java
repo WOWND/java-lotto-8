@@ -32,4 +32,11 @@ class LottoServiceTest {
         List<Integer> winningNumbers = lottoService.saveWinningNumbers("1,9,15,30,43,45");
         assertThat(winningNumbers).contains(1, 9, 15, 30, 43, 45);
     }
+
+    @Test
+    void 정상_보너스번호_입력() {
+        lottoService.saveWinningNumbers("1,2,3,4,5,6");
+        int bonusNumber = lottoService.saveBonusNumber("7");
+        assertThat(bonusNumber).isEqualTo(7);
+    }
 }
