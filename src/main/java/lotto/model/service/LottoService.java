@@ -10,6 +10,7 @@ import lotto.util.validator.LottoNumbersValidator;
 public class LottoService {
     private int purchaseAmount = 0;
     private List<Integer> winningNumbers;
+    private int bonusNumber = 0;
 
     public int savePurchaseAmount(String input) {
         InputValidator.validateNotEmpty(input);
@@ -37,6 +38,6 @@ public class LottoService {
         int bonusNumber = NumberParser.parse(input);
         LottoNumbersValidator.validateBonusNumbers(winningNumbers,bonusNumber);
 
-
+        this.bonusNumber = bonusNumber;
     }
 }
