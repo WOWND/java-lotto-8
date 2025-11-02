@@ -14,7 +14,7 @@ public class WinningNumbersValidator {
     public static void validate(List<Integer> numbers) {
         validateCount(numbers);
         validateNumberRange(numbers);
-        validateNoDuplicate(numbers);
+        validateDuplicate(numbers);
     }
 
     private static void validateCount(List<Integer> numbers) {
@@ -31,7 +31,7 @@ public class WinningNumbersValidator {
         }
     }
 
-    private static void validateNoDuplicate(List<Integer> numbers) {
+    private static void validateDuplicate(List<Integer> numbers) {
         HashSet<Integer> uniqueNumbers = new HashSet<>();
         for (Integer number : numbers) {
             if (uniqueNumbers.contains(number)) {
