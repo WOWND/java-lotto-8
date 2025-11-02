@@ -15,7 +15,8 @@ public class LottoController {
         processPurchaseAmount();
     }
 
-    public void processPurchaseAmount() {
+
+    private void processPurchaseAmount() {
         while (true) {
             try {
                 OutputView.purchaseAmount();
