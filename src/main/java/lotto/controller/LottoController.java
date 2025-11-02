@@ -12,10 +12,10 @@ public class LottoController {
     }
 
     public void run() {
-        getPurchaseAmount();
+        processPurchaseAmount();
     }
 
-    public void getPurchaseAmount() {
+    public void processPurchaseAmount() {
         while (true) {
             try {
                 OutputView.purchaseAmount();
