@@ -14,6 +14,7 @@ public class LottoController {
     public void run() {
         processPurchaseAmount();
         processWinningNumbers();
+        processBonusNumber();
     }
 
 
@@ -36,6 +37,19 @@ public class LottoController {
                 OutputView.winningNumbers();
                 String input = InputView.readLine();
                 lottoService.saveWinningNumbers(input);
+                return;
+            } catch (IllegalArgumentException e) {
+                OutputView.display(e.getMessage());
+            }
+        }
+    }
+
+    private void processBonusNumber() {
+        while (true) {
+            try {
+                OutputView.bonusNumber();
+                String input = InputView.readLine();
+                lottoService.saveBonusNumber(input);
                 return;
             } catch (IllegalArgumentException e) {
                 OutputView.display(e.getMessage());

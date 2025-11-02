@@ -15,4 +15,8 @@ public class OutputView {
     public static void winningNumbers() {
         System.out.println(ViewMessages.WINNING_NUMBERS_MESSAGE);
     }
+
+    public static void bonusNumber() {
+        System.out.println(ViewMessages.BONUS_NUMBER_MESSAGE);
+    }
 }

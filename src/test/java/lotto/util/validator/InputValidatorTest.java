@@ -21,17 +21,4 @@ public class InputValidatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> InputValidator.validateNotEmpty("  "));
     }
-
-
-    @Test
-    void 숫자형식이_아닌_입력_테스트() {
-        assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateIsNumber("1000j"));
-    }
-
-    @Test
-    void 실수형_입력() {
-        assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateIsNumber("1000.00"));
-    }
 }

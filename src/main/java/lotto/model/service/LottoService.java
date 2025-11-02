@@ -1,7 +1,7 @@
 package lotto.model.service;
 
 import java.util.List;
-import lotto.util.parser.PurChaseAmountParser;
+import lotto.util.parser.NumberParser;
 import lotto.util.parser.WinningNumberParser;
 import lotto.util.validator.InputValidator;
 import lotto.util.validator.PurchaseAmountValidator;
@@ -13,9 +13,8 @@ public class LottoService {
 
     public int savePurchaseAmount(String input) {
         InputValidator.validateNotEmpty(input);
-        InputValidator.validateIsNumber(input);
 
-        int purchaseAmount = PurChaseAmountParser.parse(input);
+        int purchaseAmount = NumberParser.parse(input);
         PurchaseAmountValidator.validateUnit(purchaseAmount);
         PurchaseAmountValidator.validateMinAmount(purchaseAmount);
 
@@ -30,5 +29,15 @@ public class LottoService {
         WinningNumbersValidator.validate(winningNumbers);
 
         return this.winningNumbers = winningNumbers;
+    }
+
+    public void saveBonusNumber(String input) {
+        InputValidator.validateNotEmpty(input);
+
+        int bonusNumber = NumberParser.parse(input);
+
+
+
+
     }
 }
