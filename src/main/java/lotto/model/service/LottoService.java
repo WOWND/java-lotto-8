@@ -7,7 +7,7 @@ import lotto.util.validator.PurchaseAmountValidator;
 public class LottoService {
     private int purchaseAmount = 0;
 
-    public void savePurchaseAmount(String input) {
+    public int savePurchaseAmount(String input) {
         InputValidator.validateNotEmpty(input);
         InputValidator.validateIsNumber(input);
 
@@ -15,6 +15,6 @@ public class LottoService {
         PurchaseAmountValidator.validateUnit(purchaseAmount);
         PurchaseAmountValidator.validateMinAmount(purchaseAmount);
 
-        this.purchaseAmount = purchaseAmount;
+        return this.purchaseAmount = purchaseAmount;
     }
 }
