@@ -20,7 +20,7 @@ public class WinningNumberParser {
             try {
                 result.add(Integer.parseInt(number));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[Error] 당첨 번호는 숫자만 입력 가능합니다");
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다");
             }
         }
         return result;
