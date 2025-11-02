@@ -3,18 +3,23 @@ package lotto.util.validator;
 import java.util.HashSet;
 import java.util.List;
 
-public class WinningNumbersValidator {
+public class LottoNumbersValidator {
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
 
-    private WinningNumbersValidator() {
+    private LottoNumbersValidator() {
     }
 
-    public static void validate(List<Integer> numbers) {
+    public static void validateWinningNumbers(List<Integer> numbers) {
         validateCount(numbers);
         validateNumberRange(numbers);
         validateDuplicate(numbers);
+    }
+
+    public static void validateBonusNumbers(List<Integer> numbers, int bonusNumber) {
+        validateNumberRange(numbers);
+        validateDuplicate(numbers,bonusNumber);
     }
 
     private static void validateCount(List<Integer> numbers) {
@@ -38,6 +43,12 @@ public class WinningNumbersValidator {
                 throw new IllegalArgumentException("[ERROR] 중복된 번호는 입력할 수 없습니다");
             }
             uniqueNumbers.add(number);
+        }
+    }
+
+    private static void validateDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다");
         }
     }
 }

@@ -5,7 +5,7 @@ import lotto.util.parser.NumberParser;
 import lotto.util.parser.WinningNumberParser;
 import lotto.util.validator.InputValidator;
 import lotto.util.validator.PurchaseAmountValidator;
-import lotto.util.validator.WinningNumbersValidator;
+import lotto.util.validator.LottoNumbersValidator;
 
 public class LottoService {
     private int purchaseAmount = 0;
@@ -26,7 +26,7 @@ public class LottoService {
 
         List<String> parsed = WinningNumberParser.split(input);
         List<Integer> winningNumbers = WinningNumberParser.parse(parsed);
-        WinningNumbersValidator.validate(winningNumbers);
+        LottoNumbersValidator.validateWinningNumbers(winningNumbers);
 
         return this.winningNumbers = winningNumbers;
     }
@@ -35,8 +35,7 @@ public class LottoService {
         InputValidator.validateNotEmpty(input);
 
         int bonusNumber = NumberParser.parse(input);
-
-
+        LottoNumbersValidator.validateBonusNumbers(winningNumbers,bonusNumber);
 
 
     }
