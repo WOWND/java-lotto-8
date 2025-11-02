@@ -11,6 +11,10 @@ public class LottoController {
         this.lottoService = lottoService;
     }
 
+    public void run() {
+        getPurchaseAmount();
+    }
+
     public void getPurchaseAmount() {
         while (true) {
             try {
