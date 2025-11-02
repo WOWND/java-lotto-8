@@ -2,12 +2,9 @@ package lotto.util.validator;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.model.domain.LottoConstants;
 
 public class LottoNumbersValidator {
-    private static final int WINNING_NUMBER_COUNT = 6;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
-
     private LottoNumbersValidator() {
     }
 
@@ -23,14 +20,14 @@ public class LottoNumbersValidator {
     }
 
     private static void validateCount(List<Integer> numbers) {
-        if (numbers.size() != WINNING_NUMBER_COUNT) {
+        if (numbers.size() != LottoConstants.COUNT) {
             throw new IllegalArgumentException("[ERROR] 6개의 당첨번호를 입력해야합니다");
         }
     }
 
     private static void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            if (number < LottoConstants.MIN || number > LottoConstants.MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1~45입니다");
             }
         }

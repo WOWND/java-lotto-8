@@ -3,6 +3,7 @@ package lotto.model.service;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.model.domain.Lotto;
+import lotto.model.domain.LottoConstants;
 import lotto.util.parser.NumberParser;
 import lotto.util.parser.WinningNumberParser;
 import lotto.util.validator.InputValidator;
@@ -53,7 +54,7 @@ public class LottoService {
             Lotto lotto = new Lotto(pickNumbers);
 
             lottos.add(lotto);
-            purchaseAmount -= 1000;
+            purchaseAmount -= LottoConstants.PRICE_UNIT;
         }
         return lottos;
     }
