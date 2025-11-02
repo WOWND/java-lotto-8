@@ -11,4 +11,8 @@ public class OutputView {
     public static void purchaseAmount() {
         System.out.println(ViewMessages.PURCHASE_AMOUNT_MESSAGE);
     }
+
+    public static void winningNumbers() {
+        System.out.println(ViewMessages.WINNING_NUMBERS_MESSAGE);
+    }
 }
