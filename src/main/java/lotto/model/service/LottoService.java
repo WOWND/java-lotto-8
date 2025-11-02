@@ -47,14 +47,15 @@ public class LottoService {
 
     public List<Lotto> createLottos() {
         List<Lotto> lottos = new ArrayList<>();
+        int currentAmount = 0;
 
-        while (purchaseAmount > 0) {
+        while (currentAmount < purchaseAmount) {
             List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             pickNumbers.sort(null);
             Lotto lotto = new Lotto(pickNumbers);
 
             lottos.add(lotto);
-            purchaseAmount -= LottoConstants.PRICE_UNIT;
+            currentAmount += LottoConstants.PRICE_UNIT;
         }
         return lottos;
     }
