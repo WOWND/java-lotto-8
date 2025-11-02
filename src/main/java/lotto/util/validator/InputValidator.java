@@ -6,7 +6,7 @@ public class InputValidator {
 
     public static void validateNotEmpty(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("입력값이 비어있습니다");
+            throw new IllegalArgumentException("[ERROR] 입력값이 비어있습니다");
         }
     }
 
@@ -15,7 +15,7 @@ public class InputValidator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다");
         }
     }
 }
