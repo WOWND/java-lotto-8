@@ -1,11 +1,14 @@
 package lotto.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import lotto.model.domain.Lotto;
 import lotto.util.parser.NumberParser;
 import lotto.util.parser.WinningNumberParser;
 import lotto.util.validator.InputValidator;
 import lotto.util.validator.PurchaseAmountValidator;
 import lotto.util.validator.LottoNumbersValidator;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoService {
     private int purchaseAmount = 0;
@@ -39,5 +42,19 @@ public class LottoService {
         LottoNumbersValidator.validateBonusNumbers(winningNumbers,bonusNumber);
 
         return this.bonusNumber = bonusNumber;
+    }
+
+    public List<Lotto> createLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        while (purchaseAmount > 0) {
+            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            pickNumbers.sort(null);
+            Lotto lotto = new Lotto(pickNumbers);
+
+            lottos.add(lotto);
+            purchaseAmount -= 1000;
+        }
+        return lottos;
     }
 }

@@ -1,5 +1,8 @@
 package lotto.view;
 
+import java.util.List;
+import lotto.model.domain.Lotto;
+
 public class OutputView {
     private OutputView() {
     }
@@ -18,5 +21,9 @@ public class OutputView {
 
     public static void bonusNumber() {
         System.out.println(ViewMessages.BONUS_NUMBER_MESSAGE);
+    }
+
+    public static void displayLottos(List<Lotto> lottos) {
+
     }
 }

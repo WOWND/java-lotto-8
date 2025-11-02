@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import java.util.List;
+import lotto.model.domain.Lotto;
 import lotto.model.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -15,6 +17,8 @@ public class LottoController {
         processPurchaseAmount();
         processWinningNumbers();
         processBonusNumber();
+
+        createLottos();
     }
 
 
@@ -55,5 +59,10 @@ public class LottoController {
                 OutputView.display(e.getMessage());
             }
         }
+    }
+
+    private void createLottos() {
+        List<Lotto> lottos = lottoService.createLottos();
+        OutputView.displayLottos(lottos);
     }
 }
