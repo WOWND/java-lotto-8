@@ -1,5 +1,7 @@
 package lotto.util.parser;
 
+import lotto.exception.ErrorMessage;
+
 public class NumberParser {
     private NumberParser() {
     }
@@ -8,7 +10,7 @@ public class NumberParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_INPUT.getMessage());
         }
     }
 }

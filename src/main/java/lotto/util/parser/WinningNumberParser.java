@@ -3,6 +3,7 @@ package lotto.util.parser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lotto.exception.ErrorMessage;
 
 public class WinningNumberParser {
     private static final String DELIMITER = ",";
@@ -20,7 +21,7 @@ public class WinningNumberParser {
             try {
                 result.add(Integer.parseInt(number));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBER_INPUT.getMessage());
             }
         }
         return result;

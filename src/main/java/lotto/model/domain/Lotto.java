@@ -2,6 +2,7 @@ package lotto.model.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.exception.ErrorMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,7 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_COUNT.getMessage());
         }
     }
 
@@ -22,7 +23,7 @@ public class Lotto {
         HashSet<Integer> uniqueNumbers = new HashSet<>();
         for (Integer number : numbers) {
             if (uniqueNumbers.contains(number)) {
-                throw new IllegalArgumentException("[ERROR] 중복된 번호는 입력할 수 없습니다");
+                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.getMessage());
             }
             uniqueNumbers.add(number);
         }

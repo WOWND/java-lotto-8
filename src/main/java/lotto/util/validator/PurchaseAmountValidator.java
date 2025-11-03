@@ -1,5 +1,6 @@
 package lotto.util.validator;
 
+import lotto.exception.ErrorMessage;
 import lotto.model.domain.LottoConstants;
 
 public class PurchaseAmountValidator {
@@ -8,13 +9,13 @@ public class PurchaseAmountValidator {
 
     public static void validateUnit(int amount) {
         if (amount % LottoConstants.PRICE_UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위로만 구입 가능합니다");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PRICE_UNIT.getMessage());
         }
     }
 
     public static void validateMinAmount(int amount) {
         if (amount < LottoConstants.MIN_AMOUNT) {
-            throw new IllegalArgumentException("[ERROR] 최소 1,000원 이상이어야 합니다");
+            throw new IllegalArgumentException(ErrorMessage.MINIMUM_PURCHASE_AMOUNT.getMessage());
         }
     }
 }

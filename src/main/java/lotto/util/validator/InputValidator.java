@@ -1,12 +1,14 @@
 package lotto.util.validator;
 
+import lotto.exception.ErrorMessage;
+
 public class InputValidator {
     private InputValidator() {
     }
 
     public static void validateNotEmpty(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 입력값이 비어있습니다");
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.getMessage());
         }
     }
 }
