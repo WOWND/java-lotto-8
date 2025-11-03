@@ -90,4 +90,12 @@ public class LottoService {
                 .map(rank -> new LottoResultDto(rank, lottoResults.getOrDefault(rank, 0)))
                 .collect(Collectors.toList());
     }
+
+    public double getProfitRate(List<LottoResultDto> lottoResults) {
+        long totalPrize = 0;
+        for (LottoResultDto lottoResult : lottoResults) {
+            totalPrize += lottoResult.calculateTotalPrize();
+        }
+        return (double) totalPrize / purchaseAmount;
+    }
 }

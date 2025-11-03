@@ -5,6 +5,7 @@ public class ViewMessages {
     public static final String WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     public static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     public static final String LOTTO_RESULT_MESSAGE = "당첨 통계\n---";
+    public static final String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     private ViewMessages() {
     }

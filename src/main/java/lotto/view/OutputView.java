@@ -38,4 +38,8 @@ public class OutputView {
             System.out.println(lottoResult);
         }
     }
+
+    public static void displayProfitRate(double profitRate) {
+        System.out.printf((ViewMessages.PROFIT_RATE_MESSAGE) + "%n", profitRate);
+    }
 }

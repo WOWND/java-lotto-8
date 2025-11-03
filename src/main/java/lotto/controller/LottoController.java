@@ -21,7 +21,8 @@ public class LottoController {
 
         List<Lotto> lottos = createLottos();
 
-        getLottoResults(lottos);
+        List<LottoResultDto> lottoResults = getLottoResults(lottos);
+        getProfitRate(lottoResults);
     }
 
 
@@ -70,8 +71,14 @@ public class LottoController {
         return lottos;
     }
 
-    private void getLottoResults(List<Lotto> lottos) {
+    private List<LottoResultDto> getLottoResults(List<Lotto> lottos) {
         List<LottoResultDto> lottoResults = lottoService.getLottoResults(lottos);
         OutputView.displayResults(lottoResults);
+        return lottoResults;
+    }
+
+    private void getProfitRate(List<LottoResultDto> lottoResults) {
+        double profitRate = lottoService.getProfitRate(lottoResults);
+        OutputView.displayProfitRate(profitRate);
     }
 }

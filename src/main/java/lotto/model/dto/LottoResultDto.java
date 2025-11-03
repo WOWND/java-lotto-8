@@ -15,4 +15,8 @@ public class LottoResultDto {
     public String toString() {
         return String.format("%s - %d개", rank, matchCount);
     }
+
+    public long calculateTotalPrize() {
+        return rank.getPrize() * matchCount;
+    }
 }

@@ -10,7 +10,7 @@ public enum LottoRank {
 
     private final int displayOrder;
     private final String message;
-    private final int prize;
+    private final long prize;
 
     LottoRank(int displayOrder, String message, int prize) {
         this.displayOrder = displayOrder;
@@ -31,11 +31,8 @@ public enum LottoRank {
         return displayOrder;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public int getPrize() {
+    public long getPrize() {
         return prize;
     }
 
