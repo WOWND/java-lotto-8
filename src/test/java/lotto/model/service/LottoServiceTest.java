@@ -2,6 +2,7 @@ package lotto.model.service;
 
 import lotto.model.domain.Lotto;
 import lotto.model.dto.LottoResultDto;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -84,5 +85,11 @@ class LottoServiceTest {
         lottoService.saveWinningNumbers("1,2,3,4,5,6");
         assertThrows(IllegalArgumentException.class,
                 () -> lottoService.saveBonusNumber("6"));
+    }
+
+    @Test
+    void 보너스번호_입력_전_당첨번호_미입력_예외() {
+        assertThatThrownBy(() -> lottoService.saveBonusNumber("7"))
+                .isInstanceOf(IllegalStateException.class);
     }
 }
