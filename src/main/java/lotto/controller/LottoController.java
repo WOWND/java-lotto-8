@@ -16,6 +16,8 @@ public class LottoController {
 
     public void run() {
         processPurchaseAmount();
+        List<Lotto> lottos = createLottos();
+
         processWinningNumbers();
         processBonusNumber();
 
