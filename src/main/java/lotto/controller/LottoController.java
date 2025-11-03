@@ -21,8 +21,6 @@ public class LottoController {
         processWinningNumbers();
         processBonusNumber();
 
-        List<Lotto> lottos = createLottos();
-
         List<LottoResultDto> lottoResults = getLottoResults(lottos);
         getProfitRate(lottoResults);
     }
