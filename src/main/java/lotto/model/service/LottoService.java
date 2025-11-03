@@ -57,11 +57,11 @@ public class LottoService {
         int currentAmount = 0;
 
         while (currentAmount < purchaseAmount) {
-            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(
+            List<Integer> pickNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                     LottoConstants.MIN,
                     LottoConstants.MAX,
                     LottoConstants.COUNT
-            );
+            ));
             pickNumbers.sort(null);
             Lotto lotto = new Lotto(pickNumbers);
 
