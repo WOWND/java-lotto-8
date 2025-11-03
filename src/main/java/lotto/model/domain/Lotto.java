@@ -1,5 +1,6 @@
 package lotto.model.domain;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -16,7 +18,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateDuplicate(List<Integer> numbers) {
+        HashSet<Integer> uniqueNumbers = new HashSet<>();
+        for (Integer number : numbers) {
+            if (uniqueNumbers.contains(number)) {
+                throw new IllegalArgumentException("[ERROR] 중복된 번호는 입력할 수 없습니다");
+            }
+            uniqueNumbers.add(number);
+        }
+    }
 
     @Override
     public String toString() {
