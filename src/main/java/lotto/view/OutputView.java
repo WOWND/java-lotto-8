@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.model.domain.Lotto;
+import lotto.model.dto.LottoResultDto;
 
 public class OutputView {
     private OutputView() {
@@ -29,5 +30,12 @@ public class OutputView {
             System.out.println(lotto);
         }
         System.out.println();
+    }
+
+    public static void displayResults(List<LottoResultDto> lottoResults) {
+        System.out.println(ViewMessages.LOTTO_RESULT_MESSAGE);
+        for (LottoResultDto lottoResult : lottoResults) {
+            System.out.println(lottoResult);
+        }
     }
 }

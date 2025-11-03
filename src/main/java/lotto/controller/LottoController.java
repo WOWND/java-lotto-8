@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.model.domain.Lotto;
+import lotto.model.dto.LottoResultDto;
 import lotto.model.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -18,7 +19,9 @@ public class LottoController {
         processWinningNumbers();
         processBonusNumber();
 
-        createLottos();
+        List<Lotto> lottos = createLottos();
+
+        getLottoResults(lottos);
     }
 
 
@@ -61,8 +64,14 @@ public class LottoController {
         }
     }
 
-    private void createLottos() {
+    private List<Lotto> createLottos() {
         List<Lotto> lottos = lottoService.createLottos();
         OutputView.displayLottos(lottos);
+        return lottos;
+    }
+
+    private void getLottoResults(List<Lotto> lottos) {
+        List<LottoResultDto> lottoResults = lottoService.getLottoResults(lottos);
+        OutputView.displayResults(lottoResults);
     }
 }

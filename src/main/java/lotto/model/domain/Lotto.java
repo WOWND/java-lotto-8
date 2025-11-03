@@ -22,4 +22,17 @@ public class Lotto {
     public String toString() {
         return numbers.toString();
     }
+
+    public LottoRank getRank(List<Integer> winningNumbers, int bonusNumber) {
+        int matchCount = 0;
+        boolean hasBonus = numbers.contains(bonusNumber);
+
+        for (Integer number : numbers) {
+            if (winningNumbers.contains(number)) {
+                matchCount++;
+            }
+        }
+
+        return LottoRank.valueOf(matchCount, hasBonus);
+    }
 }

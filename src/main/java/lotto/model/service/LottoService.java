@@ -1,9 +1,16 @@
 package lotto.model.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import lotto.model.domain.Lotto;
 import lotto.model.domain.LottoConstants;
+import lotto.model.domain.LottoRank;
+import lotto.model.dto.LottoResultDto;
 import lotto.util.parser.NumberParser;
 import lotto.util.parser.WinningNumberParser;
 import lotto.util.validator.InputValidator;
@@ -62,5 +69,25 @@ public class LottoService {
             currentAmount += LottoConstants.PRICE_UNIT;
         }
         return lottos;
+    }
+
+    public List<LottoResultDto> getLottoResults(List<Lotto> lottos) {
+        HashMap<LottoRank, Integer> lottoResults = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            LottoRank rank = lotto.getRank(winningNumbers, bonusNumber);
+
+            if (rank != LottoRank.NONE) {
+                lottoResults.merge(rank, 1, Integer::sum);
+            }
+        }
+        return convertToResultDtos(lottoResults);
+    }
+
+    private List<LottoResultDto> convertToResultDtos(Map<LottoRank, Integer> lottoResults) {
+        return Arrays.stream(LottoRank.values())
+                .filter(rank -> rank != LottoRank.NONE)
+                .sorted(Comparator.comparingInt(LottoRank::getDisplayOrder))
+                .map(rank -> new LottoResultDto(rank, lottoResults.getOrDefault(rank, 0)))
+                .collect(Collectors.toList());
     }
 }
