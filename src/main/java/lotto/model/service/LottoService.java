@@ -96,6 +96,6 @@ public class LottoService {
         for (LottoResultDto lottoResult : lottoResults) {
             totalPrize += lottoResult.calculateTotalPrize();
         }
-        return (double) totalPrize / purchaseAmount;
+        return (double) totalPrize / purchaseAmount * 100;
     }
 }
