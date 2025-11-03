@@ -50,7 +50,11 @@ public class LottoService {
         int currentAmount = 0;
 
         while (currentAmount < purchaseAmount) {
-            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(
+                    LottoConstants.MIN,
+                    LottoConstants.MAX,
+                    LottoConstants.COUNT
+            );
             pickNumbers.sort(null);
             Lotto lotto = new Lotto(pickNumbers);
 
