@@ -15,7 +15,10 @@ public class LottoNumbersValidator {
     }
 
     public static void validateBonusNumbers(List<Integer> numbers, int bonusNumber) {
-        validateNumberRange(numbers);
+        if (numbers == null) {
+            throw new IllegalStateException("[ERROR] 당첨번호를 입력한 뒤 보너스번호를 입력해야합니다");
+        }
+        validateNumberRange(bonusNumber);
         validateDuplicate(numbers,bonusNumber);
     }
 
@@ -27,9 +30,13 @@ public class LottoNumbersValidator {
 
     private static void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < LottoConstants.MIN || number > LottoConstants.MAX) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1~45입니다");
-            }
+            validateNumberRange(number);
+        }
+    }
+
+    private static void validateNumberRange(int number) {
+        if (number < LottoConstants.MIN || number > LottoConstants.MAX) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1~45입니다");
         }
     }
 
